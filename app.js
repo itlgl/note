@@ -2,6 +2,7 @@ function gotoHome()
 {
     setTitle(config.blog_name);
     setBlogName();
+    setHomeHref();
     setFooter();
     var page = 1;
     var link = {};

@@ -50,6 +50,12 @@ setBlogName = function()
     btitle.appendChild(txt);
 }
 
+setHomeHref = function()
+{
+    var homeHref = document.getElementById("home_href");
+    homeHref.href = "/" + config.github_repo;
+}
+
 cleanChild = function(node)
 {
     while (node.firstChild) {
