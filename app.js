@@ -2,7 +2,6 @@ function gotoHome()
 {
     setTitle(config.blog_name);
     setBlogName();
-    setHomeHref();
     setFooter();
     var page = 1;
     var link = {};
@@ -59,6 +58,7 @@ function gotoHome()
 function gotoPage(id)
 {
     setTitle(config.blog_name);
+    setHomeHref();
     setFooter();
     getJSON(getIssuesUrl(id), function(data) {
         setTitle(config.blog_name + " - " + data.title);
