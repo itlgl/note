@@ -75,7 +75,7 @@ setFooter = function()
 {
     var footer = document.getElementById("footer");
     footer.innerHTML = '<span>\
-        Copyright © 2015-2016 <a href="http://github.com/'+config.github_username+'" target="_blank">'+config.github_username+'</a>.\
+        Copyright © 2018 <a href="http://github.com/'+config.github_username+'" target="_blank">'+config.github_username+'</a>.\
         Powered by <a href="http://github.com/hanxi/issues-blog" target="_blank">issues-blog</a>.\
         </span>';
 }
