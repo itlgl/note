@@ -23,7 +23,7 @@ public class NoteGenerate {
     public static void main(String[] args) {
         System.out.println(postsDir.getAbsolutePath());
         System.out.println(postsDir.exists());
-        String token = System.getProperty("TOKEN");
+        String token = args != null && args.length > 0 ? args[0] : null;
         if(token == null || token.length() == 0) {
             System.out.println("get token fail");
             return;
