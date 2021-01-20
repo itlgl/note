@@ -19,6 +19,7 @@ public class NoteGenerate {
     static OkHttpClient client = new OkHttpClient();
     static Gson gson = new Gson();
     static File postsDir = new File("./_posts/");
+    static String FILE_SEPARATOR = "\r\n";
 
     public static void main(String[] args) {
         System.out.println(postsDir.getAbsolutePath());
@@ -61,17 +62,17 @@ public class NoteGenerate {
             System.out.println("write file " + fileName);
 
             StringBuilder content = new StringBuilder();
-            content.append("---\n");
-            content.append("title: ").append(issue.title).append("\n");
-            content.append("date: ").append(issue.created_at.replace("T", " ").replace("Z", " ")).append("\n");
-            content.append("categories: \n").append("- note\n");
-            content.append("tags: \n");
+            content.append("---").append(FILE_SEPARATOR);
+            content.append("title: ").append(issue.title).append(FILE_SEPARATOR);
+            content.append("date: ").append(issue.created_at.replace("T", " ").replace("Z", " ")).append(FILE_SEPARATOR);
+            content.append("categories: ").append(FILE_SEPARATOR).append("- note").append(FILE_SEPARATOR);
+            content.append("tags: ").append(FILE_SEPARATOR);
             if(issue.labels != null && issue.labels.size() > 0) {
                 for (Label label : issue.labels) {
-                    content.append("- ").append(label.name).append("\n");
+                    content.append("- ").append(label.name).append(FILE_SEPARATOR);
                 }
             }
-            content.append("---\n\n");
+            content.append("---").append(FILE_SEPARATOR);
             content.append(issue.body);
 
             File issueFile = new File(postsDir, fileName);
