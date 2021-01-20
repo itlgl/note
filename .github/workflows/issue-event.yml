@@ -25,7 +25,7 @@ jobs:
         run: mvn compile
 
       - name: Run with Maven
-        run: mvn exec:java -Dexec.mainClass="com.itlgl.jekyll.NoteGenerate" -Dexec.args="arg0 arg1 arg2"
+        run: mvn exec:java -Dexec.mainClass="com.itlgl.jekyll.NoteGenerate" -Dexec.args="${{ secrets.PERSONAL_TOKEN }}"
         env:
           TOKEN: ${{ secrets.PERSONAL_TOKEN }}
 
