@@ -1,0 +1,49 @@
+name: ISSUE
+
+on:
+  issues:
+    types: [opened, edited, deleted, labeled, unlabeled]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.PERSONAL_TOKEN }}
+          ref: gh-pages
+
+      - name: Setup Java
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: Build with Maven
+        run: mvn compile
+
+      - name: Run with Maven
+        run: mvn exec:java -Dexec.mainClass="com.itlgl.jekyll.NoteGenerate" -Dexec.args="arg0 arg1 arg2"
+        env:
+          TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+
+      - name: Commit files
+        if: github.event.action == 'opened' || github.event.action == 'edited' || github.event.action == 'labeled' || github.event.action == 'unlabeled'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git commit -a -m "exexute when issue ${{ github.event.issue.number }} updated"
+
+      - name: Commit files
+        if: github.event.action == 'deleted'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          git commit -a -m "exexute when issue ${{ github.event.issue.number }} deleted"
+
+      - name: Push changes
+        run: git push
