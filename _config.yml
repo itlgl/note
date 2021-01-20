@@ -36,6 +36,7 @@ exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", "
 
 # Separator
 #excerpt_separator: <!-- more -->
+excerpt_separator: ""
 
 # Code Highlighter
 ## 'pygments' is unsupported on GitHub Pages now.
