@@ -1,0 +1,9 @@
+---
+layout: compress
+---
+
+{% assign assets_base_url = site.url %}
+{% assign assets_images_url = '<img src="' | append: assets_base_url | append: "/images" %}
+{% include header.html %}
+    {{ content | replace: '<img src="/images', assets_images_url }}
+{% include footer.html %}
