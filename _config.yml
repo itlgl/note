@@ -1,8 +1,8 @@
 # ---------------- #
 #   Main Configs   #
 # ---------------- #
-baseurl:
-url: https://itlgl.com/note
+baseurl: /note
+url:
 date_format: "ordinal"
 title: Note
 subtitle: "日常笔记"
