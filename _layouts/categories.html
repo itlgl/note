@@ -3,6 +3,9 @@ layout: default
 ---
 
 {% assign assets_base_url = site.url %}
+{% if site.cdn.jsdelivr.enabled %}
+{% assign assets_base_url = "https://cdn.jsdelivr.net/gh/" | append: site.repository | append: '@master' %}
+{% endif %}
 <section class="collection-head small geopattern" data-pattern-id="{{ page.title | truncate: 15, ''}}">
     <div class="container">
         <div class="columns">
@@ -12,7 +15,7 @@ layout: default
                 </div>
             </div>
             <div class="column one-third mobile-hidden">
-              
+              {% include sidebar-qrcode.html %}
             </div>
         </div>
     </div>
@@ -28,11 +31,13 @@ layout: default
                 {% include sns-share.html %}
             </div>
             <div class="comment">
+                {% include comments.html %}
             </div>
         </div>
         <div class="column one-third">
             {% include sidebar-search.html %}
             {% include sidebar-categories-nav.html %}
+            {% include sidebar-ad.html %}
         </div>
     </div>
 </section>
