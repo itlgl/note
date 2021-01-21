@@ -2,7 +2,7 @@
 #   Main Configs   #
 # ---------------- #
 baseurl:
-url: https://mazhuang.org
+url: https://itlgl.com
 date_format: "ordinal"
 title: Note
 subtitle: "日常笔记"
@@ -11,7 +11,7 @@ keywords: 日常笔记
 timezone: Asia/Shanghai
 encoding: "utf-8"
 side_bar_repo_limit: 5
-repository: mzlogin/mzlogin.github.io
+repository: itlgl/note
 # 对 css 和 js 资源的 cdn 加速配置
 cdn:
     jsdelivr:
