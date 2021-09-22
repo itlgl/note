@@ -73,7 +73,10 @@ public class NoteGenerate {
                 }
             }
             content.append("---").append(FILE_SEPARATOR);
-            content.append(issue.body);
+            String issueBody = issue.body;
+            // jekyll markdown末尾加上两个空格再换行视为换行
+            issueBody = issueBody.replace("\n", "  \n");
+            content.append(issueBody);
 
             File issueFile = new File(postsDir, fileName);
             FileOutputStream fos = new FileOutputStream(issueFile);
