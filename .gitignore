@@ -8,3 +8,5 @@ Gemfile.lock
 .vscode/
 .jekyll-metadata
 target
+.idea
+*.iml
