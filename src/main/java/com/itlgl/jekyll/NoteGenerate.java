@@ -45,6 +45,10 @@ public class NoteGenerate {
         Response response = client.newCall(request).execute();
         String issueJson = response.body().string();
 
+        if (!postsDir.exists()) {
+            postsDir.mkdirs();
+        }
+
         File[] files = postsDir.listFiles();
         if(files != null) {
             for (File file : files) {
