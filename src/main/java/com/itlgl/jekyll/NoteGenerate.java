@@ -45,9 +45,12 @@ public class NoteGenerate {
         Response response = client.newCall(request).execute();
         String issueJson = response.body().string();
 
-        for (File file : postsDir.listFiles()) {
-            file.delete();
-            System.out.println("delete file " + file.getName());
+        File[] files = postsDir.listFiles();
+        if(files != null) {
+            for (File file : files) {
+                file.delete();
+                System.out.println("delete file " + file.getName());
+            }
         }
 
         List<Issue> issueList = gson.fromJson(issueJson, new TypeToken<List<Issue>>() {
