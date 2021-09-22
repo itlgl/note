@@ -37,9 +37,10 @@ public class NoteGenerate {
     }
 
     private static void run(String token) throws Exception {
-        String url = "https://api.github.com/repos/itlgl/note/issues?per_page=1000&page=1&access_token=" + token;
+        String url = "https://api.github.com/repos/itlgl/note/issues?per_page=1000&page=1";
         Request request = new Request.Builder()
                 .url(url)
+                .header("Authorization", token)
                 .build();
         Response response = client.newCall(request).execute();
         String issueJson = response.body().string();
@@ -75,7 +76,7 @@ public class NoteGenerate {
             content.append("---").append(FILE_SEPARATOR);
             String issueBody = issue.body;
             // jekyll markdown末尾加上两个空格再换行视为换行
-            issueBody = issueBody.replace("\n", "  \n");
+            issueBody = issueBody.replace("\r\n", "  \r\n");
             content.append(issueBody);
 
             File issueFile = new File(postsDir, fileName);
